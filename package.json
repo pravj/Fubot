@@ -1,0 +1,25 @@
+{
+	"name": "fbDay",
+	"version": "0.0.1",
+	"private": true,
+	"description": "--first make me--",
+	"keywords": [
+		"facebook"
+	],
+	"author": {
+		"name": "Pravendra Singh",
+		"email": "hackpravj@gmail.com"
+	},
+	"dependencies": {
+		"fbgraph" : "0.2.8",
+		"express" : "3.4.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pravj/fbday.git"
+	},
+	"engines": {
+		"node": ">= 0.8.x",
+		"npm": ">= 1.1.x"
+	}
+}
