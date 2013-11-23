@@ -16,7 +16,7 @@ app.configure(function(){
 
 // configurable vars
 var configs = {
-	token : "CAACEdEose0cBADTBgXUHiyWeKMmN6VdVeo0L7Lq4DfFCUDNGY8eKw4zDnNT3x7UfryxJCkdTXYJLGVWe1sszGzv9fZCgTb9q5vuRyu7b9hcW8W5C9FivrnNQKxh0v0ZC0Xh1TIp0FVYgYZB99R9HxTvZAJYV0MvV3znGrHq8ZBNTVvZAZCBBsax6e6ZAkoK0w1N5ADFIKybffgZDZD",
+	token : "XXXXXXXXXXXXXXXX",
 	birthday : "11/29/1994",
 	timezone : "5.5"
 }
