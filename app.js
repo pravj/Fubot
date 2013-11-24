@@ -4,14 +4,12 @@ var graph = require("fbgraph");
 var path = require("path");
 var http = require("http");
 
-var spawn=require('child_process').spawn;
-
 var app = express();
 
 app.configure(function(){
 	app.use(express.bodyParser());
-  	app.use(express.methodOverride());
-  	app.use(app.router);
+	app.use(express.methodOverride());
+	app.use(app.router);
 	app.use(express.static(path.join(__dirname,"./public")));
 	app.set("port", process.env.PORT || 3000);
 });
@@ -20,17 +18,32 @@ app.configure(function(){
 var configs = {
 	token : "XXXXXXXXXXXXXXXX",
 	birthday : "11/29/1994",
-	timezone : "5.5"
+	timezone : "5.5",
+}
+
+var comments = {
+	outgoing : ["thanks","thank you"]
 }
 
 // setting your access_token
 graph.setAccessToken(configs.token);
 
 var comment = {
-  message: "aabrakadabra"
+  message: comments.outgoing[Math.floor(Math.random()*comments.outgoing.length)] + " :)"
 };
 
 var count = 0;
+
+// trying to check that is this a wish or not
+// this is the worst part, can't be 100% sure :|
+var isWish = function(message){
+	var pattern = /(hap{1,}(y{1,}||i{1,})) ((birthday)||(b(\')*day))/i;
+
+	if(message.match(pattern))
+		{return true;}
+	else
+		{return false;}
+}
 
 // it communicates
 var sayThanks = function(ID){
@@ -48,7 +61,7 @@ var sayThanks = function(ID){
 }
 
 // limiting timestamp
-var cursor = 1385217902;
+var cursor = 1385320044;
 
 // perform query and work on result data
 var cronJob = function() {
@@ -71,14 +84,21 @@ var cronJob = function() {
 			for(var i=total-1; i>=0; i--)
 			{
 				postID = latest[i].post_id;
-				sayThanks(postID);
-				count++;
+
+				if(isWish(latest[i].message))
+				{
+					sayThanks(postID);
+					count++;
+				}
 			}
 
 			// updating limiting time after done with all latest
-			cursor = latest[0].created_time;
-			console.log("cursor is changed to " + cursor);
-			console.log("its " + count);
+			if(isWish(latest[0].message))
+			{
+				cursor = latest[0].created_time;
+				console.log("cursor is changed to " + cursor);
+				console.log("its " + count);
+			}
 		}
 
 		else
@@ -92,7 +112,7 @@ cronJob();
 setInterval(cronJob, 60000);
 
 app.get("/", function(req,res){
-	res.send("hello world!" + configs.token);
+	res.send(count + "responses and counting..");
 });
 
 http.createServer(app).listen((process.env.PORT || 3000), function(){
