@@ -4,6 +4,8 @@ var graph = require("fbgraph");
 var path = require("path");
 var http = require("http");
 
+var spawn=require('child_process').spawn;
+
 var app = express();
 
 app.configure(function(){
@@ -86,8 +88,8 @@ var cronJob = function() {
 	});
 }
 
-//cronJob();
-setInterval(cronJob(), 10000);
+cronJob();
+setInterval(cronJob, 60000);
 
 app.get("/", function(req,res){
 	res.send("hello world!" + configs.token);
