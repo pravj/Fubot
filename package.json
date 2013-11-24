@@ -1,10 +1,10 @@
 {
-	"name": "fbDay",
-	"version": "0.0.1",
-	"private": true,
-	"description": "--first make me--",
+	"name": "Fubot",
+	"version": "0.0.2",
+	"description": "Fubot takes care of posts on your Facebook Timeline under your guide",
 	"keywords": [
-		"facebook"
+		"Facebook",
+		"Bot"
 	],
 	"author": {
 		"name": "Pravendra Singh",

@@ -1,5 +1,8 @@
 {
 	"BirthDate": "11/29/1994",
-	"timezone": "",
-	"AccessToken": "XXXXXXXXXXXXXXXXX"
+	"timezone": "5.5",
+	"AccessToken": "XXXXXXXXXXXXXXXXX",
+	"comments" : {
+		"outgoing" : ["thanks","thank you"]
+	}
 }

@@ -15,23 +15,19 @@ app.configure(function(){
 });
 
 // configurable vars
-var configs = {
-	token : "XXXXXXXXXXXXXXXX",
-	birthday : "11/29/1994",
-	timezone : "5.5",
-}
+var configs = require("./config/config.json");
 
-var comments = {
-	outgoing : ["thanks","thank you"]
-}
+// comments that Fubot will do
+var comments = configs.comments;
 
 // setting your access_token
-graph.setAccessToken(configs.token);
+graph.setAccessToken(configs.AccessToken);
 
 var comment = {
   message: comments.outgoing[Math.floor(Math.random()*comments.outgoing.length)] + " :)"
 };
 
+// total response count
 var count = 0;
 
 // trying to check that is this a wish or not
@@ -109,10 +105,11 @@ var cronJob = function() {
 }
 
 cronJob();
-setInterval(cronJob, 60000);
+// repeating after each 30 seconds
+setInterval(cronJob, 30000);
 
 app.get("/", function(req,res){
-	res.send(count + "responses and counting..");
+	res.send(count + " responses and counting..");
 });
 
 http.createServer(app).listen((process.env.PORT || 3000), function(){
