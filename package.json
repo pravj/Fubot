@@ -11,8 +11,8 @@
 		"email": "hackpravj@gmail.com"
 	},
 	"dependencies": {
-		"fbgraph" : "0.2.8",
-		"express" : "3.4.0"
+		"fbgraph" : ">=0.2.8",
+		"express" : ">=3.4.0"
 	},
 	"repository": {
 		"type": "git",

@@ -33,7 +33,7 @@ var count = 0;
 // trying to check that is this a wish or not
 // this is the worst part, can't be 100% sure :|
 var isWish = function(message){
-	var pattern = /(hap{1,}(y{1,}||i{1,})) ((birthday)||(b(\')*day))/i;
+	var pattern = /(hap{1,}(y{1,}||i{1,}))||((birthday)||(b(\')*day))/i;
 
 	if(message.match(pattern))
 		{return true;}
@@ -57,7 +57,7 @@ var sayThanks = function(ID){
 }
 
 // limiting timestamp
-var cursor = 1385320044;
+var cursor = 1385721548;
 
 // perform query and work on result data
 var cronJob = function() {
